@@ -33,10 +33,10 @@ for ip in possibleIps:
     
     
     bootp = BOOTP(
-        chaddr=RandString(12, "0123456789abcdef")
+        chaddr=mac2str(spoofed_mac),
+        xid=random.randint(1, 1000000000),
+        flags=0xFFFFFF
         )
-    chaddr=RandString(12, "0123456789abcdef")
-    print(chaddr)
 
 
     dhcp = DHCP(options=[
