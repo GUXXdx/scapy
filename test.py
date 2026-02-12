@@ -36,7 +36,7 @@ for ip in possibleIps:
         chaddr=RandString(12, "0123456789abcdef")
         )
     chaddr=RandString(12, "0123456789abcdef")
-    echo (chaddr)
+    print(chaddr)
 
 
     dhcp = DHCP(options=[
