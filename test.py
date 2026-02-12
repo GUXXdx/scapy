@@ -31,7 +31,8 @@ for ip in possibleIps:
         dport=67
         )
     
-    BOOTP(
+    
+    bootp = BOOTP(
         chaddr=RandString(12, "0123456789abcdef")
         )
 
@@ -42,7 +43,7 @@ for ip in possibleIps:
         ("end")
         ])
 
-    dhcpRequest = ethernet/internetProtocol/udp/dhcp
+    dhcpRequest = ethernet/internetProtocol/udp/bootp/dhcp
 
     sendp(dhcpRequest,iface=networkInterface, verbose=0)
 
