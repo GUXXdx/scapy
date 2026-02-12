@@ -5,7 +5,7 @@ import ipaddress
 # Variables
 network = '10.1.10.0/24'
 ipServerDHCP = '10.1.30.1'
-networkInterface= 'wlan0'
+networkInterface= 'enp0s9'
 
 # List all ips in the network
 possibleIps = [str(ip) for ip in ipaddress.IPv4Network(network)]
