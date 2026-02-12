@@ -35,6 +35,9 @@ for ip in possibleIps:
     bootp = BOOTP(
         chaddr=RandString(12, "0123456789abcdef")
         )
+    chaddr=RandString(12, "0123456789abcdef")
+    echo (chaddr)
+
 
     dhcp = DHCP(options=[
         ("message-type", "request"),
