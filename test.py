@@ -33,7 +33,7 @@ for ip in possibleIps:
     
     
     bootp = BOOTP(
-        chaddr=mac2str(spoofed_mac),
+        chaddr=mac2str(macSrc),
         xid=random.randint(1, 1000000000),
         flags=0xFFFFFF
         )
