@@ -1,11 +1,18 @@
 # on importe la lib scapy
 from scapy.all import *
 import ipaddress
+import argparse
 
-# Variables
-network = '10.1.10.0/24'
-ipServerDHCP = '10.1.30.1'
-networkInterface= 'enp0s9'
+parser = argparse.ArgumentParser(description="DHCP starvation")
+
+parser.add_argument("ipServerDHCP", help="Adresse IP du serveur DHCP")
+parser.add_argument("network", help="Réseau au format CIDR (ex: 10.1.30.0/24)")
+
+args = parser.parse_args()
+
+ipServerDHCP = args.ipServerDHCP
+network = args.network
+networkInterface= 'enp0s3'
 
 # List all ips in the network
 possibleIps = [str(ip) for ip in ipaddress.IPv4Network(network)]
