@@ -12,7 +12,7 @@ args = parser.parse_args()
 
 ipServerDHCP = args.ipServerDHCP
 network = args.network
-networkInterface= 'enp0s3'
+networkInterface= 'enp0s9'
 
 # List all ips in the network
 possibleIps = [str(ip) for ip in ipaddress.IPv4Network(network)]
