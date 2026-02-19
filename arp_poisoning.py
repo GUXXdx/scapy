@@ -23,7 +23,6 @@ send(
         op="is-at",
         psrc=fakeIp, 
         pdst=victimeIp,
-        lop=1
         )
     )
 
